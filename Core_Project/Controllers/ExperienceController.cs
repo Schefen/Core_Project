@@ -1,6 +1,9 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,9 +28,24 @@ namespace Core_Project.Controllers
         }
         [HttpPost]
         public IActionResult AddExperience(Experience experience)
-        {           
-            _experienceManager.TAdd(experience);
-            return RedirectToAction("Index");
+        {
+            ExperienceValidator experienceValidator = new ExperienceValidator();
+            ValidationResult results = experienceValidator.Validate(experience);
+            if (results.IsValid)
+            {
+                _experienceManager.TAdd(experience);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                    ViewBag.v2 = "Deneyimler";
+                    ViewBag.v3 = "Deneyim Ekleme Sayfası";
+                }
+            }
+            return View();
         }
         public IActionResult DeleteExperience(int id)
         {

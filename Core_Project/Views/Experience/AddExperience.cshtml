@@ -12,15 +12,19 @@
     <br />
     <label>Deneyim</label>
     @Html.TextBoxFor(x=>x.ExperienceName, new {@class = "form-control"})
+    @Html.ValidationMessageFor(x=>x.ExperienceName)
     <br />
     <label>Tarih</label>
     @Html.TextBoxFor(x=>x.ExperienceDate, new {@class = "form-control"})
+    @Html.ValidationMessageFor(x=>x.ExperienceDate)
     <br />
     <label>Resim Yolu</label>
     @Html.TextBoxFor(x=>x.ExperienceImageUrl, new {@class = "form-control"})
+    @Html.ValidationMessageFor(x=>x.ExperienceImageUrl)
     <br />
     <label>Açıklama</label>
     @Html.TextAreaFor(x=>x.ExperienceDescription, 10, 3,new {@class = "form-control"})
+    @Html.ValidationMessageFor(x=>x.ExperienceDescription)
     <br />
     <button class="btn btn-primary">Ekle</button>
 }
