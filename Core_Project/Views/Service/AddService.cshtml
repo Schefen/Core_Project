@@ -1,23 +1,29 @@
 ﻿@model EntityLayer.Concrete.Service
 @{
     ViewData["Title"] = "AddService";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
 
-<div class="card-header border-0">
-    <h3 class="mb-0">Hizmet Ekleme Sayfası</h3>
-</div>
 @using (Html.BeginForm("AddService", "Service", FormMethod.Post))
 {
-    <br />
-    <label>Hizmet</label>
-    @Html.TextBoxFor(x=>x.ServiceTitle, new {@class = "form-control"})
-    @Html.ValidationMessageFor(x=>x.ServiceTitle)
-    <br />
-    <label>Fotoğraf Yolu</label>
-    @Html.TextBoxFor(x=>x.ServiceImageUrl, new {@class = "form-control"})
-    @Html.ValidationMessageFor(x=>x.ServiceImageUrl)
-    <br />
-    <button class="btn btn-primary">Ekle</button>
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <form class="forms-sample">
+                    <div class="form-group">
+                        <label>Hizmet Adı</label>
+                        @Html.TextBoxFor(x=>x.ServiceTitle, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(x=>x.ServiceTitle)
+                    </div>
+                    <div class="form-group">
+                        <label>Pozisyon & Tarih</label>
+                        @Html.TextBoxFor(x=>x.ServiceImageUrl, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(x=>x.ServiceImageUrl)
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Kaydet</button>
+                    <a href="/Service/Index" class="btn btn-dark">Geri</a>
+                </form>
+            </div>
+        </div>
+    </div>
 }
-

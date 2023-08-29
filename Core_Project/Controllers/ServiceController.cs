@@ -32,7 +32,7 @@ namespace Core_Project.Controllers
             if (results.IsValid)
             {
                 _serviceManager.TAdd(service);
-                return RedirectToAction("Index","Default");
+                return RedirectToAction("Index","Service");
             }
             else
             {
@@ -49,7 +49,7 @@ namespace Core_Project.Controllers
         {
             var value = _serviceManager.TGetById(id);
             _serviceManager.TDelete(value);
-            return RedirectToAction("Index","Default");
+            return RedirectToAction("Index","Service");
         }
         [HttpGet]
         public IActionResult EditService(int id)
@@ -63,7 +63,7 @@ namespace Core_Project.Controllers
         public IActionResult EditService(Service service)
         {
             _serviceManager.TUpdate(service);
-            return RedirectToAction("Index","Default");
+            return RedirectToAction("Index","Service");
         }
     }
 }

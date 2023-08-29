@@ -12,10 +12,10 @@ namespace BusinessLayer.ValidationRules
     {
         public ExperienceValidator()
         {
-            RuleFor(x => x.ExperienceName).NotNull().WithMessage("Lütfen Eklenecek Yetenek Giriniz.");
-            RuleFor(x => x.ExperienceDate).NotNull().WithMessage("Lütfen Eklenecek Değeri Giriniz.");
-            RuleFor(x => x.ExperienceImageUrl).NotNull().WithMessage("Lütfen Eklenecek Değeri Giriniz.");
-            RuleFor(x => x.ExperienceDescription).NotNull().WithMessage("Lütfen Eklenecek Değeri Giriniz.");
+            RuleFor(x => x.ExperienceName).NotEmpty().WithMessage("Lütfen Boşluğu Doldurunuz.");
+            RuleFor(x => x.ExperienceDate).NotEmpty().WithMessage("Lütfen Boşluğu Doldurunuz.");
+            RuleFor(x => x.ExperienceImageUrl).NotEmpty().WithMessage("Lütfen Boşluğu Doldurunuz.");
+            RuleFor(x => x.ExperienceDescription).NotEmpty().WithMessage("Lütfen Boşluğu Doldurunuz.");
         }
     }
 }

@@ -1,30 +1,38 @@
 ﻿@model EntityLayer.Concrete.Experience
 @{
     ViewData["Title"] = "AddExperience";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
-
-<div class="card-header border-0">
-    <h3 class="mb-0">Deneyim Ekleme Sayfası</h3>
-</div>
 @using (Html.BeginForm("AddExperience", "Experience", FormMethod.Post))
 {
-    <br />
-    <label>Deneyim</label>
-    @Html.TextBoxFor(x=>x.ExperienceName, new {@class = "form-control"})
-    @Html.ValidationMessageFor(x=>x.ExperienceName)
-    <br />
-    <label>Tarih</label>
-    @Html.TextBoxFor(x=>x.ExperienceDate, new {@class = "form-control"})
-    @Html.ValidationMessageFor(x=>x.ExperienceDate)
-    <br />
-    <label>Resim Yolu</label>
-    @Html.TextBoxFor(x=>x.ExperienceImageUrl, new {@class = "form-control"})
-    @Html.ValidationMessageFor(x=>x.ExperienceImageUrl)
-    <br />
-    <label>Açıklama</label>
-    @Html.TextAreaFor(x=>x.ExperienceDescription, 10, 3,new {@class = "form-control"})
-    @Html.ValidationMessageFor(x=>x.ExperienceDescription)
-    <br />
-    <button class="btn btn-primary">Ekle</button>
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <form class="forms-sample">
+                    <div class="form-group">
+                        <label>Deneyim Adı</label>
+                        @Html.TextBoxFor(x=>x.ExperienceName, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(x=>x.ExperienceName)
+                    </div>
+                    <div class="form-group">
+                        <label>Pozisyon & Tarih</label>
+                        @Html.TextBoxFor(x=>x.ExperienceDate, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(x=>x.ExperienceDate)
+                    </div>
+                    <div class="form-group">
+                        <label>Resim Yolu</label>
+                        @Html.TextBoxFor(x=>x.ExperienceImageUrl, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(x=>x.ExperienceImageUrl)
+                    </div>
+                    <div class="form-group">
+                        <label>Açıklama</label>
+                        @Html.TextAreaFor(x=>x.ExperienceDescription, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(x=>x.ExperienceDescription)
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Kaydet</button>
+                    <a href="/Experience/Index" class="btn btn-dark">Geri</a>
+                </form>
+            </div>
+        </div>
+    </div>
 }

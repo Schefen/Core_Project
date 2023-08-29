@@ -34,7 +34,7 @@ namespace Core_Project.Controllers
             if (results.IsValid)
             {
                 _experienceManager.TAdd(experience);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Experience");
             }
             else
             {

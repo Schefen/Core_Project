@@ -1,31 +1,39 @@
 ﻿@model EntityLayer.Concrete.Portfolio
 @{
     ViewData["Title"] = "AddPortfolio";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
 
-<div class="card-header border-0">
-    <h3 class="mb-0">Proje Ekleme Sayfası</h3>
-</div>
 @using (Html.BeginForm("AddPortfolio", "Portfolio", FormMethod.Post))
 {
-    <br />
-    <label>Proje Adı</label>
-    @Html.TextBoxFor(x=>x.PortfolioName, new {@class = "form-control"})
-    @Html.ValidationMessageFor(x=>x.PortfolioName)
-    <br />
-    <label>Küçük Resim</label>
-    @Html.TextBoxFor(x=>x.PortfolioImageUrl, new {@class = "form-control"})
-    @Html.ValidationMessageFor(x=>x.PortfolioImageUrl)
-    <br />
-    <label>Büyük Resim</label>
-    @Html.TextBoxFor(x=>x.PortfolioImageUrl2, new {@class = "form-control"})
-    @Html.ValidationMessageFor(x=>x.PortfolioImageUrl2)
-    <br />
-    <label>Proje URL</label>
-    @Html.TextBoxFor(x=>x.PortfolioUrl,new {@class = "form-control"})
-    @Html.ValidationMessageFor(x=>x.PortfolioUrl)
-    <br />
-    <button class="btn btn-primary">Ekle</button>
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <form class="forms-sample">
+                    <div class="form-group">
+                        <label>Proje Adı</label>
+                        @Html.TextBoxFor(x=>x.PortfolioName, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(x=>x.PortfolioName)
+                    </div>
+                    <div class="form-group">
+                        <label>Küçük Resim Yolu</label>
+                        @Html.TextBoxFor(x=>x.PortfolioImageUrl, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(x=>x.PortfolioImageUrl)
+                    </div>
+                    <div class="form-group">
+                        <label>Büyük Resim Yolu</label>
+                        @Html.TextBoxFor(x=>x.PortfolioImageUrl2, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(x=>x.PortfolioImageUrl2)
+                    </div>
+                    <div class="form-group">
+                        <label>Proje URL</label>
+                        @Html.TextBoxFor(x=>x.PortfolioUrl, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(x=>x.PortfolioUrl)
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Kaydet</button>
+                    <a href="/Portfolio/Index" class="btn btn-dark">Geri</a>
+                </form>
+            </div>
+        </div>
+    </div>
 }
-

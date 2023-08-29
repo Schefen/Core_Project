@@ -33,7 +33,7 @@ namespace Core_Project.Controllers
             if (results.IsValid)
             {
                 _portfolioManager.TAdd(portfolio);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Portfolio");
             }
             else
             {
