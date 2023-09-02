@@ -1,3 +1,7 @@
+using Core_Project.Areas.Writer.Models;
+using DataAccessLayer.Concrete;
+using EntityLayer.Concrete;
+
 namespace Core_Project
 {
     public class Program
@@ -7,7 +11,11 @@ namespace Core_Project
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddDbContext<Context>();
+            builder.Services.AddIdentity<WriterUser, WriterRole>().AddEntityFrameworkStores<Context>()
+            .AddErrorDescriber<TurkishIdentityErrorDescriber>();
             builder.Services.AddControllersWithViews();
+
 
             var app = builder.Build();
 
