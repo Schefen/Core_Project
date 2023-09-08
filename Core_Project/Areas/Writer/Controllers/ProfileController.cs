@@ -7,6 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 namespace Core_Project.Areas.Writer.Controllers
 {
     [Area("Writer")]
+    [Route("Writer/[controller]/[action]")]
     public class ProfileController : Controller
     {
         public readonly UserManager<WriterUser> _userManager;
@@ -42,10 +43,11 @@ namespace Core_Project.Areas.Writer.Controllers
             }
             user.WriterUserName = userEditViewModel.Name;
             user.WriterUserSurname = userEditViewModel.Surname;
+            user.PasswordHash = _userManager.PasswordHasher.HashPassword(user,userEditViewModel.Password);
             var result = await _userManager.UpdateAsync(user);
             if (result.Succeeded)
             {
-                return RedirectToAction("Index","Default");
+                return RedirectToAction("Index","Login");
             }
             return View();
         }

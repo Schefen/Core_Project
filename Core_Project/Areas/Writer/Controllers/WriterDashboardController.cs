@@ -28,10 +28,10 @@ namespace Core_Project.Areas.Writer.Controllers
             ViewBag.v5 = document.Descendants("temperature").ElementAt(0).Attribute("value").Value;
             //statistics
             Context context = new Context();
-            ViewBag.v1 = 0;
-            ViewBag.v2 = context.Announcements.Count();
-            ViewBag.v3 = 0;
-            ViewBag.v4 = context.Skills.Count();
+            ViewBag.v1 = context.WriterMessages.Where(x=>x.WriterMessageReceiver==values.UserName).Count();
+            ViewBag.v2 = context.WriterMessages.Where(x=>x.WriterMessageSender==values.UserName).Count();
+            ViewBag.v3 = context.Users.Count();
+            ViewBag.v4 = context.Announcements.Count();
 
             return View();
         }
