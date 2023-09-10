@@ -1,0 +1,17 @@
+﻿@model EntityLayer.Concrete.WriterMessage
+@{
+    ViewData["Title"] = "AdminSendboxDetails";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<form class="form-group">
+    @Html.HiddenFor(x=>x.WriterMessageId)
+    <div class="d-flex">
+        <div>
+            <p class="text-info mb-1">Alıcı : @Html.DisplayFor(x=>x.WriterMessageReceiver)</p>
+            <p class="text-info mb-1">Konu : @Html.DisplayFor(x=>x.WriterMessageSubject)</p>
+            <p class="mb-0">@Html.DisplayFor(x=>x.WriterMessageContent)</p>
+        </div>
+    </div>
+</form>
+
