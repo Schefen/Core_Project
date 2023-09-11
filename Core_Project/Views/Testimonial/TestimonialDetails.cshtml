@@ -1,0 +1,17 @@
+﻿@model EntityLayer.Concrete.Testimonial
+@{
+    ViewData["Title"] = "TestimonialDetails";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<form class="form-group">
+    @Html.HiddenFor(x=>x.TestimonialId)
+    <div class="d-flex">
+        <div>
+            <p class="text-info mb-1">Yorum Sahibi : @Html.DisplayFor(x=>x.ClientName)</p>
+            <p class="text-info mb-1">Şirket : @Html.DisplayFor(x=>x.ClientCompany)</p>
+            <p class="mb-0">@Html.DisplayFor(x=>x.ClientComment)</p>
+        </div>
+    </div>
+</form>
+

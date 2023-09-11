@@ -45,7 +45,7 @@ namespace BusinessLayer.Concrete
 
         public void TUpdate(Testimonial t)
         {
-            throw new NotImplementedException();
+            _testimonialDal.Update(t);
         }
     }
 }
