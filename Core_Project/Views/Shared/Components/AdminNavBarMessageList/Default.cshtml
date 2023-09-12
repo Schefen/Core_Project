@@ -1,0 +1,23 @@
+﻿@using EntityLayer.Concrete
+@model List<WriterMessage>
+
+
+<li class="nav-item dropdown border-left">
+    <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+        <i class="mdi mdi-email"></i>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+        <h6 class="p-3 mb-0">Son Mesajlar</h6>
+        @foreach (var item in Model)
+        {
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item preview-item" href="/AdminMessage/AdminInboxDetails/@item.WriterMessageId">
+                <div class="preview-item-content">
+                    <p class="preview-subject ellipsis mb-1">@item.WriterMessageSender Mesaj Gönderdi</p>
+                    <p class="text-muted mb-0"> @item.WriterMessageDate.ToShortDateString()</p>
+                </div>
+            </a>
+            <div class="dropdown-divider"></div>
+        }
+    </div>
+</li>

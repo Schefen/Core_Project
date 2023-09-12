@@ -1,0 +1,15 @@
+﻿@model EntityLayer.Concrete.Announcement
+@{
+    ViewData["Title"] = "AdminAnnouncementDetails";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<form class="form-group">
+    @Html.HiddenFor(x=>x.AnnouncementId)
+    <div class="d-flex">
+        <div>
+            <p class="text-info mb-1">Konu : @Html.DisplayFor(x=>x.AnnouncementTitle)</p>
+            <p class="mb-0">@Html.DisplayFor(x=>x.AnnouncementContent)</p>
+        </div>
+    </div>
+</form>
