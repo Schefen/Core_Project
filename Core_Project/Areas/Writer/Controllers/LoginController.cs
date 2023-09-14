@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Core_Project.Areas.Writer.Controllers
 {
+    [AllowAnonymous]
     [Area("Writer")]
     [Route("Writer/[controller]/[action]")]
     public class LoginController : Controller

@@ -1,6 +1,9 @@
 using Core_Project.Areas.Writer.Models;
 using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace Core_Project
 {
@@ -16,6 +19,23 @@ namespace Core_Project
             .AddErrorDescriber<TurkishIdentityErrorDescriber>();
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddMvc(config =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                .RequireAuthenticatedUser()
+                .Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
+            });
+            builder.Services.AddMvc();
+            builder.Services.ConfigureApplicationCookie(options=>
+                {
+                    options.Cookie.HttpOnly = true;
+                    options.ExpireTimeSpan = TimeSpan.FromHours(1);
+                    options.AccessDeniedPath = "/ErrorPage/Index/";
+                    options.LoginPath = "/Writer/Login/Index/";
+
+
+            });
 
             var app = builder.Build();
 
