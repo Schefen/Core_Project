@@ -12,13 +12,13 @@ namespace Core_Project.Controllers
         WriterMessageManager _writerMessageManager = new WriterMessageManager(new EfWriterMessageDal());
         public IActionResult AdminInbox()
         {
-            string p = "Schefen";
+            string p = "Admin";
             var values = _writerMessageManager.GetListReceiverMessage(p);
             return View(values);
         }
         public IActionResult AdminSendbox()
         {
-            string p = "Schefen";
+            string p = "Admin";
             var values = _writerMessageManager.GetListSenderMessage(p);
             return View(values);
         }
@@ -41,7 +41,7 @@ namespace Core_Project.Controllers
         [HttpPost]
         public ActionResult AdminMessageSender(WriterMessage writerMessage)
         {
-            writerMessage.WriterMessageSender = "Schefen";
+            writerMessage.WriterMessageSender = "Admin";
             writerMessage.WriterMessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             _writerMessageManager.TAdd(writerMessage);
             return RedirectToAction("AdminSendbox");
