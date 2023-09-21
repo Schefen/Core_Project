@@ -7,26 +7,48 @@
 
 <div class="col-md-6">
     <div class="p-2">
-        <button type="button" id="btngetlistall" class="btn btn-outline-primary">Verileri Getir</button>
-        <button type="button" id="btnadduser" class="btn btn-outline-info">Verileri Getir</button>
+        <button type="button" id="btngetlistall" class="btn btn-outline-primary">Getir</button>
+        <button type="button" id="btnadduser" class="btn btn-outline-info">Kaydet</button>
+        <button type="button" id="btngetbyid" class="btn btn-outline-warning">ID ile getir</button>
+        <button type="button" id="btndelete" class="btn btn-outline-danger">Sil</button>
     </div>
 </div>
 
 <div class="p-2" id="listexperience">
     buraya veriler gelecek*
 </div>
+<div class="p-2" id="listexperiencebyid">
+    buraya veriler gelecek*
+</div>
 
 <br />
 <div class="col-md-12">
+
+    <h4>Ekleme paneli</h4>
     <input type="text" class="form-control" id="inpname" placeholder="Ad" />
     <br />
-    <input type="text" class="form-control" id="inpsurname" placeholder="Soyad" />
+    <input type="text" class="form-control" id="inpdate" placeholder="Tarih" />
     <br />
-    <input type="text" class="form-control" id="inpusername" placeholder="Kullanıcı Adı" />
+    <input type="text" class="form-control" id="inpimage" placeholder="Resim" />
     <br />
-    <input type="text" class="form-control" id="inpmail" placeholder="Mail Adresi" />
+    <input type="text" class="form-control" id="inpdesc" placeholder="Açıklama" />
 
 </div>
+<br />
+<div class="col-md-12">
+
+    <h4>ID'ye göre getirme paneli</h4>
+    <input type="text" class="form-control" id="inpid" placeholder="Id" />
+
+</div>
+<br />
+<div class="col-md-12">
+
+    <h4>Silme paneli</h4>
+    <input type="text" class="form-control" id="inpexpid" placeholder="Id" />
+
+</div>
+<br />
 @section scripts
     {
     <script>
@@ -48,6 +70,56 @@
                     htmlst += "</table>"
                     $("#listexperience").html(htmlst);
 
+                }
+            });
+        });
+
+        $("#btnadduser").click(function () {
+            let values = {
+                ExperienceName: $("#inpname").val(),
+                ExperienceDate: $("#inpdate").val(),
+                ExperienceImageUrl: $("#inpimage").val(),
+                ExperienceDescription: $("#inpdesc").val(),
+            };
+
+            $.ajax({
+                type: "Post",
+                url: "/ExperienceWAjax/AddExperience/",
+                data: values,
+                succes: function (funk1) {
+                    let result = jQuery.parseJSON(funk1);
+                    alert(result.ExperienceName + "Başarılı");
+                }
+            });
+        });
+
+        $("#btngetbyid").click(x =>{
+            let id = $("#inpid").val();
+
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "get",
+                url: "/ExperienceWAjax/GetById/",
+                data: {ExperienceId:id},
+                success: function (funk2) {
+                    let result = jQuery.parseJSON(funk2);
+                    console.log(result);
+                    let htmlstr = `<table class=table table-hover> <tr> <th>Deneyim ID</th> <td>${result.ExperienceId}</td></tr> <tr> <th> Deneyim Başlığı </th> <td> ${result.ExperienceName}</td> </tr> </table>`;
+                    $("#listexperiencebyid").html(htmlstr);
+                }              
+
+            })
+        });
+        $("#btndelete").click(x=>{
+            let id = $("#inpexpid").val();
+            $.ajax({
+                url:"/ExperienceWAjax/DeleteExperience/"+id,
+                type:"post",
+                contentType: "application/json",
+                dataType: "json",
+                succes: function(funk3){
+                    loadData();
                 }
             });
         });
