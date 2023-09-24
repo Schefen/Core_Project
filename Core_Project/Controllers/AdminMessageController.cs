@@ -1,12 +1,15 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
+using System.Data;
 
 namespace Core_Project.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminMessageController : Controller
     {
         WriterMessageManager _writerMessageManager = new WriterMessageManager(new EfWriterMessageDal());

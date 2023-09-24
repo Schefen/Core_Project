@@ -7,6 +7,10 @@ namespace Core_Project.Controllers
         public IActionResult Index()
         {
             return View();
+        } 
+        public IActionResult Error404()
+        {
+            return View();
         }
     }
 }

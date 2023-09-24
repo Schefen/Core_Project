@@ -13,7 +13,7 @@
                                 <th> Proje Adı </th>
                                 <th> URL </th>
                                 <th> Fiyat </th>
-                                <th> İlerleme Durumu</th>
+                                <th> Tamamlanma </th>
                                 <th> Durum </th>
                             </tr>
                         </thead>
@@ -26,10 +26,8 @@
                                     <td> @item.PortfolioUrl</td>
                                     <td> @item.PortfolioPrice</td>
                                     <td> @item.PortfolioRatio%</td>
-                                    <td> @item.PortfolioStatus</td>
-                                    <td>
-@*                                        <div class="badge badge-outline-success">Approved</div>*@
-                                    </td>
+                                    <td> <a href="/Portfolio/EditPortfolio/@item.PortfolioId">
+                                        <div class="badge badge-outline-success">Detay</div></a></td>
                                 </tr>
                             }                          
                         </tbody>

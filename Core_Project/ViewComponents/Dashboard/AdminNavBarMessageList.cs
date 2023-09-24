@@ -9,7 +9,7 @@ namespace Core_Project.ViewComponents.Dashboard
         WriterMessageManager _writerMessageManager = new WriterMessageManager(new EfWriterMessageDal());
         public IViewComponentResult Invoke()
         {
-            string p = "Schefen";
+            string p = "Admin";
             var values = _writerMessageManager.GetListReceiverMessage(p).OrderByDescending(x => x.WriterMessageId).Take(4).ToList();
             return View(values);
         }

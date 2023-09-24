@@ -6,9 +6,11 @@ namespace Core_Project.ViewComponents.Dashboard
 {
     public class FeatureMessage : ViewComponent
     {
+        MessageManager _messageManager = new MessageManager(new EfMessageDal());
         public IViewComponentResult Invoke()
         {
-            return View();
+            var values = _messageManager.TGetList().Take(4).ToList();
+            return View(values);
         }
     }
 }

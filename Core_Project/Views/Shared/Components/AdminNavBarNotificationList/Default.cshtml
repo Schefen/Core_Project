@@ -14,7 +14,7 @@
             <a class="dropdown-item preview-item" href="/Dashboard/AdminAnnouncementDetails/@item.AnnouncementId">
                 <div class="preview-item-content">
                     <p class="preview-subject mb-1">@item.AnnouncementTitle</p>
-                    <p class="text-muted ellipsis mb-0">@item.AnnouncementDate.ToShortDateString()</p>
+                    <p class="text-muted mb-0">@(((DateTime)item.AnnouncementDate).ToString("dd,MMM,yyyy"))</p>
                 </div>
             </a>
         }
